@@ -5,8 +5,27 @@ import datetime as dt
 # Targets
 # A B C D H J K + 1 new columns
 
+# Writing to the file
+write = Workbook()
+ws = write.active
+now = dt.datetime.now()
+delta = dt.timedelta(hours=2)
+
+
 def ChangeTime(key, start):
 	pass
+
+def header():
+	ws['A1'] = "Day"
+	ws['B1'] = "Date"
+	ws['C1'] = "Venue"
+	ws['D1'] = "E"
+	ws['E1'] = "Status"
+	ws['F1'] = "Time"
+	ws['G1'] = "Event"
+	ws['H1'] = "FS Initials"
+	ws['I1'] = "Comments"
+	
 
 def main():
 	wb = load_workbook('Sept 15 Cal.xlsx', read_only=True)
@@ -19,21 +38,11 @@ def main():
 			if 'P' in row[3].value and row[7].value == 'FIRM':
 				select.append((row[0].value, row[1].value, row[2].value, row[3].value, row[7].value, row[9].value, row[10].value))
 
-	# Writing to the file
-	write = Workbook()
-	ws = write.active
-	now = dt.datetime.now()
-	delta = dt.timedelta(hours=2)
+
 	# Write the header
-	ws['A1'] = "Day"
-	ws['B1'] = "Date"
-	ws['C1'] = "Venue"
-	ws['D1'] = "E"
-	ws['E1'] = "Status"
-	ws['F1'] = "Time"
-	ws['G1'] = "Event"
-	ws['H1'] = "FS Initials"
-	ws['I1'] = "Comments"
+	header()
+	
+
 	for i in range(len(select)):
 		#print(type(select[i][5]))
 		ws['A'+str(i+2)] = select[i][0]
