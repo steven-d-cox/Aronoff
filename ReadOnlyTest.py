@@ -41,6 +41,7 @@ def main():
 		ws['C'+str(i+2)] = select[i][2]
 		ws['D'+str(i+2)] = select[i][3]
 		ws['E'+str(i+2)] = select[i][4]
+		#ws['F'+str(i+2)] = select[i][5]
 		ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
 		ws['G'+str(i+2)] = select[i][6]
 	write.save("sampleout.xlsx")
