@@ -2,15 +2,9 @@ from openpyxl import load_workbook
 from openpyxl import Workbook
 import datetime as dt
 
-# Targets
-# A B C D H J K + 1 new columns
-
 # Writing to the file
 write = Workbook()
 ws = write.active
-now = dt.datetime.now()
-delta = dt.timedelta(hours=2)
-pgdelta = dt.timedelta(hours=2, minutes=30)
 
 def ChangeTime(start, hours, minutes):
 	pass
@@ -26,13 +20,19 @@ def header():
 	ws['H1'] = "FS Initials"
 	ws['I1'] = "Comments"
 
-def columnWidth():
+def columnWidth(dimensions):
 	ws.column_dimensions['B'].width = 20
 	ws.column_dimensions['G'].width = 40
 	ws.column_dimensions['I'].width = 40
 	
 
 def main():
+
+	
+	now = dt.datetime.now()
+	delta = dt.timedelta(hours=2)
+	pgdelta = dt.timedelta(hours=2, minutes=30)
+
 	wb = load_workbook('Sept 15 Cal.xlsx', read_only=True)
 	sheet = wb['Sept 2015']
 
@@ -48,7 +48,7 @@ def main():
 	header()
 
 	# Adjust column width for larger columns
-	columnWidth()
+	columnWidth([])
 	
 	# change it so it passes the sheet var in as a param, safer code
 
@@ -59,7 +59,6 @@ def main():
 		ws['C'+str(i+2)] = select[i][2]
 		ws['D'+str(i+2)] = select[i][3]
 		ws['E'+str(i+2)] = select[i][4]
-		#ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
 		if select[i][2] == 'P&G':
 			ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - pgdelta).time()
 		else:
