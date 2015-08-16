@@ -55,7 +55,7 @@ def main():
 	for i in range(len(select)):
 		#print(type(select[i][5]))
 		ws['A'+str(i+2)] = select[i][0]
-		ws['B'+str(i+2)] = select[i][1]
+		ws['B'+str(i+2)] = select[i][1].date()
 		ws['C'+str(i+2)] = select[i][2]
 		ws['D'+str(i+2)] = select[i][3]
 		ws['E'+str(i+2)] = select[i][4]
