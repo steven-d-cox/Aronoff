@@ -10,10 +10,9 @@ write = Workbook()
 ws = write.active
 now = dt.datetime.now()
 delta = dt.timedelta(hours=2)
+pgdelta = dt.timedelta(hours=2, minutes=30)
 
-
-def ChangeTime(key, start):
-	# incorporate an offset param
+def ChangeTime(start, hours, minutes):
 	pass
 
 def header():
@@ -60,7 +59,11 @@ def main():
 		ws['C'+str(i+2)] = select[i][2]
 		ws['D'+str(i+2)] = select[i][3]
 		ws['E'+str(i+2)] = select[i][4]
-		ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
+		#ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
+		if select[i][2] == 'P&G':
+			ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - pgdelta).time()
+		else:
+			ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
 		ws['G'+str(i+2)] = select[i][6]
 	write.save("sampleout.xlsx")
 
