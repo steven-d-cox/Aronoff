@@ -20,15 +20,13 @@ def header():
 	ws['H1'] = "FS Initials"
 	ws['I1'] = "Comments"
 
-def columnWidth(dimensions):
+def columnWidth(active, dimensions):
 	ws.column_dimensions['B'].width = 20
 	ws.column_dimensions['G'].width = 40
 	ws.column_dimensions['I'].width = 40
 	
 
 def main():
-
-	
 	now = dt.datetime.now()
 	delta = dt.timedelta(hours=2)
 	pgdelta = dt.timedelta(hours=2, minutes=30)
@@ -48,7 +46,7 @@ def main():
 	header()
 
 	# Adjust column width for larger columns
-	columnWidth([])
+	columnWidth(ws, [('B', 20), ('G', 40), ('I', 40)])
 	
 	# change it so it passes the sheet var in as a param, safer code
 
@@ -68,3 +66,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
