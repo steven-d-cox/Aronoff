@@ -1,12 +1,27 @@
-from openpyxl import load_workbook
-# Targets
-# A B C D H J K + 1 new columns
+import datetime as dt 
 
-wb = load_workbook('Sept 15 Cal.xlsx')
-sheet = wb['Sept 2015']
 
-for i in range(1,200):
-	if sheet['D' + str(i)].value != None:
-		if ('P' in sheet['D' + str(i)].value) and (sheet['H' + str(i)].value == 'FIRM'):
-			A = sheet[str(i)].value
-	
+
+def changeTime(tm, hours):
+	date = dt.datetime(100, 1, 1, tm.hour, tm.minute, tm.second)
+	date = date + dt.timedelta(hours=hours)
+	return date.time()
+
+def differentTime(now):
+	time = (dt.datetime.combine(date.today(), now) + timedelta(hours=2)).time()
+
+now = dt.datetime.now().time()
+before = changeTime(now, -2)
+before2 = changeTime(now, -2.5)
+test = differentTime(now)
+
+print(now)
+print(before)
+print(before2)
+print(test)
+
+
+def columnWidth():
+	ws.column_dimensions['B'].width = 20
+	ws.column_dimensions['G'].width = 40
+	ws.column_dimensions['I'].width = 40

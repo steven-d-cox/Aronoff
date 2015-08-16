@@ -26,6 +26,11 @@ def header():
 	ws['G1'] = "Event"
 	ws['H1'] = "FS Initials"
 	ws['I1'] = "Comments"
+
+def columnWidth():
+	ws.column_dimensions['B'].width = 20
+	ws.column_dimensions['G'].width = 40
+	ws.column_dimensions['I'].width = 40
 	
 
 def main():
@@ -42,6 +47,10 @@ def main():
 
 	# Write the header
 	header()
+
+	# Adjust column width for larger columns
+	columnWidth()
+	
 	# change it so it passes the sheet var in as a param, safer code
 
 	for i in range(len(select)):
