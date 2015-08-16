@@ -27,11 +27,13 @@ def columnWidth(active, dimensions):
 	
 
 def main():
+
 	now = dt.datetime.now()
 	delta = dt.timedelta(hours=2)
 	pgdelta = dt.timedelta(hours=2, minutes=30)
 
 	wb = load_workbook('Sept 15 Cal.xlsx', read_only=True)
+	# Automate the reading process, loop through all valid sheets for the WB
 	sheet = wb['Sept 2015']
 
 	select = []
