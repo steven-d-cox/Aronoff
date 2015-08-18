@@ -1,30 +1,15 @@
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import datetime as dt
+from functions import * 
 
 # Writing to the file
 write = Workbook()
 ws = write.active
+f = functions()
 
 def ChangeTime(start, hours, minutes):
 	pass
-
-def header():
-	ws['A1'] = "Day"
-	ws['B1'] = "Date"
-	ws['C1'] = "Venue"
-	ws['D1'] = "E"
-	ws['E1'] = "Status"
-	ws['F1'] = "Time"
-	ws['G1'] = "Event"
-	ws['H1'] = "FS Initials"
-	ws['I1'] = "Comments"
-
-def columnWidth(dimensions):
-	ws.column_dimensions['B'].width = 20
-	ws.column_dimensions['G'].width = 40
-	ws.column_dimensions['I'].width = 40
-	
 
 def main():
 
@@ -33,7 +18,7 @@ def main():
 	delta = dt.timedelta(hours=2)
 	pgdelta = dt.timedelta(hours=2, minutes=30)
 
-	wb = load_workbook('Sept 15 Cal.xlsx', read_only=True)
+	wb = load_workbook('inputSchedules/Sept 15 Cal.xlsx', read_only=True)
 	sheet = wb['Sept 2015']
 
 	select = []
@@ -45,12 +30,12 @@ def main():
 
 
 	# Write the header
-	header()
+	f.header()
+	# change it so it passes the sheet var in as a param, safer code
 
 	# Adjust column width for larger columns
-	columnWidth([])
+	f.columnWidth([])
 	
-	# change it so it passes the sheet var in as a param, safer code
 
 	for i in range(len(select)):
 		#print(type(select[i][5]))
