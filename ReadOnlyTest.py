@@ -64,12 +64,13 @@ def main():
 		else:
 			ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
 		ws['G'+str(i+2)] = select[i][6]
+
+# Hide columns for later
+ws.column_dimensions.group('D', 'E', hidden=True)
 	
-	# Hide columns for later
-	ws.column_dimensions.group('D', 'E', hidden=True)
-	
-	# Save 
-	write.save("FloorSupervisorAvailablitiy.xlsx")
+# Save 
+write.save("FloorSupervisorAvailablitiy.xlsx")
+
 
 
 if __name__ == "__main__":
