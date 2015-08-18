@@ -20,7 +20,7 @@ def header():
 	ws['H1'] = "FS Initials"
 	ws['I1'] = "Comments"
 
-def columnWidth(active, dimensions):
+def columnWidth(dimensions):
 	ws.column_dimensions['B'].width = 20
 	ws.column_dimensions['G'].width = 40
 	ws.column_dimensions['I'].width = 40
@@ -28,12 +28,12 @@ def columnWidth(active, dimensions):
 
 def main():
 
+	
 	now = dt.datetime.now()
 	delta = dt.timedelta(hours=2)
 	pgdelta = dt.timedelta(hours=2, minutes=30)
 
 	wb = load_workbook('Sept 15 Cal.xlsx', read_only=True)
-	# Automate the reading process, loop through all valid sheets for the WB
 	sheet = wb['Sept 2015']
 
 	select = []
@@ -48,7 +48,7 @@ def main():
 	header()
 
 	# Adjust column width for larger columns
-	columnWidth(ws, [('B', 20), ('G', 40), ('I', 40)])
+	columnWidth([])
 	
 	# change it so it passes the sheet var in as a param, safer code
 
@@ -64,8 +64,14 @@ def main():
 		else:
 			ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
 		ws['G'+str(i+2)] = select[i][6]
-	write.save("sampleout.xlsx")
+
+# Hide columns for later
+ws.column_dimensions.group('D', 'E', hidden=True)
+	
+# Save 
+write.save("FloorSupervisorAvailablitiy.xlsx")
+
+
 
 if __name__ == "__main__":
     main()
-
