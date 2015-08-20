@@ -1,19 +1,19 @@
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import datetime as dt
-from functions import * 
+import functions
 
 # Writing to the file
-write = Workbook()
-ws = write.active
-f = functions()
+#write = Workbook()
+#ws = write.active
+
 
 def ChangeTime(start, hours, minutes):
 	pass
 
 def main():
 
-	
+	""" Read Stage """
 	now = dt.datetime.now()
 	delta = dt.timedelta(hours=2)
 	pgdelta = dt.timedelta(hours=2, minutes=30)
@@ -28,17 +28,16 @@ def main():
 			if 'P' in row[3].value and row[7].value == 'FIRM':
 				select.append((row[0].value, row[1].value, row[2].value, row[3].value, row[7].value, row[9].value, row[10].value))
 
-
+	""" Write Stage """
+	write = Workbook()
+	ws = write.active
 	# Write the header
-	f.header()
-	# change it so it passes the sheet var in as a param, safer code
+	#f.header()
 
-	# Adjust column width for larger columns
-	f.columnWidth([])
+
 	
 
 	for i in range(len(select)):
-		#print(type(select[i][5]))
 		ws['A'+str(i+2)] = select[i][0]
 		ws['B'+str(i+2)] = select[i][1].date()
 		ws['C'+str(i+2)] = select[i][2]
@@ -49,12 +48,15 @@ def main():
 		else:
 			ws['F'+str(i+2)] = (dt.datetime.combine(dt.date(1,1,1),select[i][5]) - delta).time()
 		ws['G'+str(i+2)] = select[i][6]
+		ws['I'+str(i+2)] = ''
+	# Adjust column width for larger columns
+	ws = functions.columnWidth(ws, [('B', 20), ('G', 40), ('I', 40)])
 
-# Hide columns for later
-ws.column_dimensions.group('D', 'E', hidden=True)
+	# Hide columns for later
+	ws.column_dimensions.group('D', 'E', hidden=True)
 	
-# Save 
-write.save("FloorSupervisorAvailablitiy.xlsx")
+	# Save 
+	write.save("FloorSupervisorAvailablitiy.xlsx")
 
 
 

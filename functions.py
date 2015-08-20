@@ -1,17 +1,8 @@
 from openpyxl import load_workbook
 from openpyxl import Workbook
 
-write = Workbook()
-ws = write.active
-
 class functions:
 	
-	def columnWidth(self, dimensions):
-
-		ws.column_dimensions['B'].width = 20
-		ws.column_dimensions['G'].width = 40
-		ws.column_dimensions['I'].width = 40
-
 	def header(self):
 		
 		ws['A1'] = "Day"
@@ -24,3 +15,10 @@ class functions:
 		ws['H1'] = "FS Initials"
 		ws['I1'] = "Comments"
 
+def columnWidth(writer, dimensions):
+	for d in dimensions:
+		writer.column_dimensions[d[0]].width = d[1]
+	return writer
+	#writer.column_dimensions['B'].width = 20
+	#ws.column_dimensions['G'].width = 40
+	#ws.column_dimensions['I'].width = 40
