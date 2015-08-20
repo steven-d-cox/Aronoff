@@ -31,3 +31,47 @@ def main():
 	# write out to new file with supervisors initials added to appropriate row
 
 	# include logic for the columns type, number of shifts, availability for each day 
+
+	""" Write Stage """
+	wrtite = Workbook()
+	ws = write.active
+	# Write the header
+	ws['A1'] = "Day"
+	ws['B1'] = "Date"
+	ws['C1'] = "Venue"
+	ws['D1'] = "E"
+	ws['E1'] = "Status"
+	ws['F1'] = "Time"
+	ws['G1'] = "Event"
+	ws['H1'] = "Type"
+	ws['I1'] = "MOD"
+	ws['J1'] = "JK"
+	ws['K1'] = "5/3"
+	ws['L1'] = "Shift"
+	ws['M1'] = "Per Day"
+	ws['N1'] = "Assigned"
+	ws['O1'] = "Remaining"
+
+
+
+	# Sum of shifts
+
+	# Sum of per day
+
+	# Sum of remaining 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
