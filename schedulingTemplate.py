@@ -16,7 +16,11 @@ def loadWorkbook(form):
 	for row in sheet.row: 
 		if row[7].value != null: 
 			select.append((row[0].value, row[1].value, row[2].value, row[3].value, row[4].value, row[5].value, row[6].value))
+	return select # have to return it 
 
+# write script to find all input xlsx files in directory and iterate through them
+def parseFiles(context):
+	pass
 
 #def type():
 #	if time is after 5pm = 'N'
@@ -33,7 +37,7 @@ def main():
 	# include logic for the columns type, number of shifts, availability for each day 
 
 	""" Write Stage """
-	wrtite = Workbook()
+	write = Workbook()
 	ws = write.active
 	# Write the header
 	ws['A1'] = "Day"
