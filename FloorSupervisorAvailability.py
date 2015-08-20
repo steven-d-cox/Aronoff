@@ -32,10 +32,15 @@ def main():
 	write = Workbook()
 	ws = write.active
 	# Write the header
-	#f.header()
-
-
-	
+	ws['A1'] = "Day"
+	ws['B1'] = "Date"
+	ws['C1'] = "Venue"
+	ws['D1'] = "E"
+	ws['E1'] = "Status"
+	ws['F1'] = "Time"
+	ws['G1'] = "Event"
+	ws['H1'] = "FS Initials"
+	ws['I1'] = "Comments"
 
 	for i in range(len(select)):
 		ws['A'+str(i+2)] = select[i][0]
