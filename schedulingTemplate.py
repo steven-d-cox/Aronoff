@@ -1,6 +1,7 @@
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import datetime as dt
+import os, sys
 
 # Writing to the file
 write = Workbook()
@@ -14,7 +15,7 @@ def loadWorkbook(form):
 	select = []
 
 	for row in sheet.row: 
-		if row[7].value != null: 
+		if row[7].value: 
 			select.append((row[0].value, row[1].value, row[2].value, row[3].value, row[4].value, row[5].value, row[6].value))
 	return select # have to return it 
 
@@ -30,8 +31,12 @@ def parseFiles(context):
 
 
 def main():
-	# loop through and grab each Floor supervisor availability form 
+	select = []
+	#print(os.listdir())
+	#floorSupervisorAvailability
 
+	# loop through and grab each Floor supervisor availability form 
+	#loadWorkbook
 	# write out to new file with supervisors initials added to appropriate row
 
 	# include logic for the columns type, number of shifts, availability for each day 
