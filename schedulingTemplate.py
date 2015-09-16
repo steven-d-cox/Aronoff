@@ -8,13 +8,13 @@ write = Workbook()
 ws = write.active
 
 # Function for loading all the Floor supervisor availability
-def loadWorkbook(form):
-	wb = load_workbook(form, read_only=True)
-	sheet = wb['Sheet']
+def loadWorkbook(path, form):
+	wb = load_workbook((path+ "\\" + form), read_only=True)
+	sheet = wb['Schedule']
 
 	select = []
 
-	for row in sheet.row: 
+	for row in sheet.rows: 
 		if row[7].value: 
 			select.append((row[0].value, row[1].value, row[2].value, row[3].value, row[4].value, row[5].value, row[6].value))
 	return select # have to return it 
@@ -32,16 +32,19 @@ def parseFiles(context):
 
 def main():
 	select = []
-	#print(os.listdir())
-	#floorSupervisorAvailability
 
 	# loop through and grab each Floor supervisor availability form 
-	#loadWorkbook
+	path = 'schedulingTemplate'
+	for template in os.listdir(path):
+		# this loops through everything in the directory specified by 'path'
+		print(template)
+		data = loadWorkbook(path, template)
+		#print(data)
 	# write out to new file with supervisors initials added to appropriate row
 
 	# include logic for the columns type, number of shifts, availability for each day 
 
-	""" Write Stage """
+	""" Write Stage 
 	write = Workbook()
 	ws = write.active
 	# Write the header
@@ -60,7 +63,7 @@ def main():
 	ws['M1'] = "Per Day"
 	ws['N1'] = "Assigned"
 	ws['O1'] = "Remaining"
-
+	"""
 
 
 	# Sum of shifts
@@ -70,17 +73,5 @@ def main():
 	# Sum of remaining 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    main()
