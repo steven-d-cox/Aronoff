@@ -27,7 +27,7 @@ def loadWorkbook(path, form):
 def main():
 	shifts = {}
 
-	# loop through and grab each Floor supervisor availability form 
+	# Loop through and grab each Floor supervisor availability form 
 	path = 'floorSupervisorAvailability'
 	for template in os.listdir(path):
 		# this loops through everything in the directory specified by 'path'
@@ -38,14 +38,19 @@ def main():
 	print(shifts)
 	
 
+	# Open the existing Scheduling Template 
+	modfile = 'schedulingTemplate/Scheduling template default.xlsm'
+	wb = load_workbook(modfile)
+	ws = wb.get_active_sheet()
 	# write out to new file with supervisors initials added to appropriate row
-	write = Workbook()
-	ws = write.active
+	#write = Workbook()
+	#aws = write.active
 	# Write the headers for our volunteers
-	init = 'P'
-	for key, value in shifts:
-		ws[init + '3'] = key
-		init = chr(ord(init) + 1)
+	
+	#init = 'P'
+	#for key, value in shifts:
+	#	ws[init + '3'] = key
+	#	init = chr(ord(init) + 1)
 
 
 	# include logic for the columns type, number of shifts, availability for each day 
