@@ -1,0 +1,9 @@
+TODO:
+
+Function that iterates through FloorSupervisorAvailability folder then takes values in column 'FS initals' and creates a column in Schedule Template excel file with the person's initals and fills the values entered from that supervisor's FloorSupervisorAvailability file. Function has to iterate through adding columns to meet the amount of FloorSupervisorAvailability file inputs there could be (20 max I think)
+
+Add math for assigning shifts based on highest percentage of availability. Shifts are determined based on Venue; 'P&G' = 4 shifts, anything else 1 shift
+
+Function for determining if a show is a night show or day show. 
+
+
