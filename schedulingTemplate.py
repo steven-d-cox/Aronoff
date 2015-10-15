@@ -39,8 +39,15 @@ def main():
 	
 
 	# write out to new file with supervisors initials added to appropriate row
-	
-	
+	write = Workbook()
+	ws = write.active
+	# Write the headers for our volunteers
+	init = 'P'
+	for key, value in shifts:
+		ws[init + '3'] = key
+		init = chr(ord(init) + 1)
+
+
 	# include logic for the columns type, number of shifts, availability for each day 
 
 
@@ -50,6 +57,8 @@ def main():
 
 	# Sum of remaining 
 
+	# Save what we have written to file
+	write.save("schedulingTemplate/Scheduling template default.xlsx")
 
 if __name__ == "__main__":
     main()
